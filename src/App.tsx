@@ -36,12 +36,13 @@ const INGREDIENTS = [
 export default function App() {
   const [heroCategory, setHeroCategory] = useState<Category>('sweet')
   const [menuCategory, setMenuCategory] = useState<Category>('sweet')
+  const [lightMode, setLightMode] = useState(false)
 
   const filteredProducts = PRODUCTS.filter((p) => p.category === menuCategory)
   const featuredProduct = PRODUCTS.find((p) => p.category === heroCategory) ?? PRODUCTS[0]
 
   return (
-    <div className="app">
+    <div className={`app${lightMode ? ' light' : ''}`}>
 
       {/* ── Header ── */}
       <header className="header">
@@ -57,7 +58,12 @@ export default function App() {
             <a href="#about">About</a>
             <a href="#faq">FAQ</a>
           </nav>
-          <button className="cart-btn" aria-label="Shopping cart">Cart (0)</button>
+          <div className="header-actions">
+            <button className="mode-btn" onClick={() => setLightMode((m) => !m)} aria-label="Toggle light mode">
+              {lightMode ? '◑ Dark' : '○ Light'}
+            </button>
+            <button className="cart-btn" aria-label="Shopping cart">Cart (0)</button>
+          </div>
         </div>
       </header>
 
@@ -73,20 +79,28 @@ export default function App() {
               <span className="badge">drop 01</span>
             </div>
             <h1 className="hero-headline">
-              Gloss that<br />commands attention.
+              What snack do<br />you want today?
             </h1>
             <p className="hero-sub">
               Treatment-grade shine meets editorial flavour.<br />
               One drop. All day.
             </p>
+            <div className="hero-flavor-select">
+              <button
+                className={`flavor-btn${heroCategory === 'sweet' ? ' active' : ''}`}
+                onClick={() => { setHeroCategory('sweet'); setMenuCategory('sweet') }}
+              >
+                ✦ Sweet
+              </button>
+              <button
+                className={`flavor-btn${heroCategory === 'savory' ? ' active' : ''}`}
+                onClick={() => { setHeroCategory('savory'); setMenuCategory('savory') }}
+              >
+                ✦ Savory
+              </button>
+            </div>
             <div className="hero-ctas">
               <button className="btn-primary">Shop Now</button>
-              <button
-                className="btn-toggle-pill"
-                onClick={() => setHeroCategory((c) => (c === 'sweet' ? 'savory' : 'sweet'))}
-              >
-                {heroCategory === 'sweet' ? 'Switch to Savory' : 'Switch to Sweet'}
-              </button>
               <a href="#ingredients" className="btn-text-link">Ingredients ↗</a>
             </div>
             <div className="hero-tags">
