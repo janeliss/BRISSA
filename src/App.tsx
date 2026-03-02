@@ -48,7 +48,7 @@ export default function App() {
         <div className="header-inner">
           <div className="header-brand">
             <span className="header-dot" aria-hidden="true" />
-            <img src="/brissa-logo.png" alt="brissa by JS" className="header-logo" />
+            <img src="/brissa.png" alt="brissa by JS" className="header-logo" />
             <span className="header-by">By JS</span>
           </div>
           <nav className="header-nav" aria-label="Main navigation">
