@@ -12,7 +12,7 @@ interface Product {
 }
 
 const PRODUCTS: Product[] = [
-  { id: 1, name: 'Kettle Corn', note: 'Buttery vanilla with a warm caramel finish.', price: '$24', category: 'sweet' },
+  { id: 1, name: 'Cookies & Cream', note: 'Rich vanilla cream with a dark cocoa finish.', price: '$24', category: 'sweet' },
   { id: 2, name: 'Almond Gelato', note: 'Silky almond cream with a soft luminous sheen.', price: '$24', category: 'sweet' },
   { id: 3, name: 'Chili Lime', note: 'Sharp citrus with a slow, warming heat.', price: '$24', category: 'savory' },
   { id: 4, name: 'Sea Salt', note: 'Clean mineral finish with coastal clarity.', price: '$24', category: 'savory' },
@@ -100,7 +100,11 @@ export default function App() {
             <div className="product-frame">
               <div className="product-frame-inner">
                 <span className="product-frame-label">Featured Tube</span>
-                <div className="product-frame-packshot" aria-hidden="true" />
+                {featuredProduct.name === 'Cookies & Cream' ? (
+                  <img src="/cookiesncream.png" alt="Cookies & Cream" className="product-frame-img" />
+                ) : (
+                  <div className="product-frame-packshot" aria-hidden="true" />
+                )}
                 <div className="product-frame-meta">
                   <span className="product-frame-name">{featuredProduct.name}</span>
                   <span className="product-frame-price">{featuredProduct.price}</span>

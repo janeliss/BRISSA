@@ -294,6 +294,14 @@
   margin-bottom: 28px;
 }
 
+.product-frame-img {
+  width: 100%;
+  min-height: 320px;
+  object-fit: cover;
+  margin-bottom: 28px;
+  display: block;
+}
+
 .product-frame-meta {
   display: flex;
   align-items: baseline;
